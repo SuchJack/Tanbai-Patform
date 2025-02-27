@@ -12,7 +12,6 @@ export const BACKEND_HOST_PROD = 'https://api.moshanghong.site'
 /**
  * COS 存储桶地址
  */
-// export const COS_HOST = 'https://tanbai-1256961743.cos.ap-chengdu.myqcloud.com/'
 export const COS_HOST = 'https://tbpic.moshanghong.site'
 
 /**

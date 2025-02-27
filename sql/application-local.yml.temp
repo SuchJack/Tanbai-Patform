@@ -1,0 +1,55 @@
+# 对象存储
+cos:
+  client:
+    accessKey: xxx
+    secretKey: xxx
+    region: xxx
+    bucket: xxx
+tan:
+  datasource:
+    host: xxx
+    port: 3306
+    database: xxx
+    username: xxx
+    password: xxx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jwt:
+#    admin-secret-key: SuchJack-admin
+#    admin-ttl: 7200000
+#    admin-token-name: token
+    # 设置jwt签名加密时使用的秘钥
+    user-secret-key: SuchJack-user
+    # 设置jwt过期时间
+    user-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    user-token-name: authentication
+  wechat:
+    appid: xxx
+    secret: xxx
+    # 商户号
+    mchid: xxx
+    # 商户API证书的证书序列号
+    mchSerialNo: xxx
+    # 商户私钥文件
+    privateKeyFilePath: xxx
+    # 证书解密的密钥
+    apiV3Key: xxx
+    # 平台证书
+    weChatPayCertFilePath: xxx
+    # 支付成功的回调地址
+    notifyUrl: http://xxx:8641/notify/paySuccess
+    # 退款成功的回调地址
+    refundNotifyUrl: http://xxx:8641/notify/refundSuccess
+
+# 日志配置
+logging:
+  level:
+    com.truthgame: info
+  file:
+    name: logs/truth-game.log
+
+knife4j:
+  basic:
+    enable: xxx
+    username: xxx
+    password: xxxxx

@@ -34,12 +34,13 @@
 
 ### 项目部署
 
-直接在后端复制一份application-local.yml.temp，改名为application-local.yml
+1. 执行SQL文件
 
-然后配置好相关信息即可启动
+2. 将application-local.yml.temp改名为application-local.yml放到后端项目resources中，并将"xxxx"配置好（微信支付不配置不影响执行）
+
+3. 然后配置好相关信息即可启动
 
 注：微信支付使用的是平台证书，暂时还没切换到平台公钥模式
-
 
 
 #### **// TODO LIST**

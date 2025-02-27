@@ -1,0 +1,121 @@
+{
+  // 组件自动导入
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      // uni-ui 规则如下配置
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+      // 以 Xtx 开头的组件，在 components 目录中查找
+      "^Xtx(.*)": "@/components/Xtx$1.vue"
+    }
+  },
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        //        "navigationStyle": "custom", // 默认隐藏导航
+        //        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "首页",
+        "enableShareAppMessage": true,
+        "enableShareTimeline": true
+      }
+    },
+    {
+      "path": "pages/my/my",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/index/components/CreateQuestion/index",
+      "style": {
+        "navigationBarTitleText": "创建问题"
+      }
+    },
+    {
+      "path": "pages/index/components/MyQuestions/index",
+      "style": {
+        "navigationBarTitleText": "我的问题"
+      }
+    },
+    {
+      "path": "pages/index/components/MyParticipation/index",
+      "style": {
+        "navigationBarTitleText": "我参与的"
+      }
+    },
+    {
+      "path": "pages/index/components/CommonQuestions/index",
+      "style": {
+        "navigationBarTitleText": "常见问题"
+      }
+    },
+    {
+      "path": "pages/question/detail",
+      "style": {
+        "navigationBarTitleText": "有问必答",
+        "enableShareAppMessage": true,
+        "enableShareTimeline": true
+      }
+    },
+    {
+      "path": "pages/share/index",
+      "style": {
+        "navigationBarTitleText": "分享"
+      }
+    },
+    {
+      "path": "pages/agreement/index",
+      "style": {
+        "navigationBarTitleText": "用户协议"
+      }
+    },
+    {
+      "path": "pages/comment/index",
+      "style": {
+        "navigationBarTitleText": "留言板"
+      }
+    },
+    {
+      "path": "pages/message/index",
+      "style": {
+        "navigationBarTitleText": "联系客服"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "坦白驿站",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  // 设置 TabBar
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#add8e6",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabs/home_default.png",
+        "selectedIconPath": "static/tabs/home_selected.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/my/my",
+        "iconPath": "static/tabs/user_default.png",
+        "selectedIconPath": "static/tabs/user_selected.png"
+      }
+    ]
+  },
+  "mp-weixin": {
+    "permission": {
+      "scope.writePhotosAlbum": {
+        "desc": "保存分享图片需要使用您的相册权限"
+      }
+    }
+  }
+}

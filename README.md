@@ -39,6 +39,8 @@
 2. 将application-local.yml.temp改名为application-local.yml放到后端项目resources中，并将"xxxx"配置好。
 
 3. 配置好相关信息即可启动（想要快速启动直接配置好数据库连接信息，其他可暂不配置）
+
+
 注：微信支付使用的是平台证书，暂时还没切换到平台公钥模式
 
 

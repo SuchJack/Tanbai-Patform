@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.truthgame.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.truthgame.model.entity.User">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="openId" column="openId" jdbcType="VARCHAR"/>
+            <result property="unionId" column="unionId" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nickName" jdbcType="VARCHAR"/>
+            <result property="avatarUrl" column="avatarUrl" jdbcType="VARCHAR"/>
+            <result property="sessionKey" column="sessionKey" jdbcType="VARCHAR"/>
+            <result property="userRole" column="userRole" jdbcType="VARCHAR"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+            <result property="ipLocation" column="ipLocation" jdbcType="VARCHAR"/>
+            <result property="os" column="os" jdbcType="VARCHAR"/>
+            <result property="lastLoginTime" column="lastLoginTime" jdbcType="TIMESTAMP"/>
+            <result property="browser" column="browser" jdbcType="VARCHAR"/>
+            <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+            <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,openId,unionId,
+        nickName,avatarUrl,sessionKey,
+        userRole,ip,ipLocation,
+        os,lastLoginTime,browser,
+        createTime,updateTime,isDelete
+    </sql>
+</mapper>

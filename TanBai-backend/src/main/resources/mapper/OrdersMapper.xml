@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.truthgame.mapper.OrdersMapper">
+
+    <resultMap id="BaseResultMap" type="com.truthgame.model.entity.Orders">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="number" column="number" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="userId" column="userId" jdbcType="BIGINT"/>
+            <result property="orderTime" column="orderTime" jdbcType="TIMESTAMP"/>
+            <result property="checkoutTime" column="checkoutTime" jdbcType="TIMESTAMP"/>
+            <result property="payMethod" column="payMethod" jdbcType="INTEGER"/>
+            <result property="payStatus" column="payStatus" jdbcType="TINYINT"/>
+            <result property="amount" column="amount" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,number,status,
+        userId,orderTime,checkoutTime,
+        payMethod,payStatus,amount
+    </sql>
+</mapper>

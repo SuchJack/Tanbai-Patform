@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: tanbai-service # 微服务名称
+  profiles:
+    active: local # 环境标识
+  cloud:
+    nacos:
+      server-addr: xxxxxxxxxxx:8848
+      config:
+        namespace: xxxxxxxxxxxxx
+        file-extension: yaml
+        shared-configs:
+          - data-id: shared-redis.yaml
+            refresh: true
+      discovery:
+        namespace: xxxxxxxxxxxxx

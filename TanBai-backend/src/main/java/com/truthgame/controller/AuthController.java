@@ -28,7 +28,7 @@ public class AuthController {
     @PostMapping("/wx/login")
     @ApiOperation("微信登录")
     public Result<LoginUserVO> wxLogin(@Valid @RequestBody WxLoginDTO loginDTO) {
-        log.info("微信用户登录：{}", loginDTO.getCode());
+        log.info("收到微信登录code：{}", loginDTO.getCode());
 
         User user = userService.wxLogin(loginDTO);
 

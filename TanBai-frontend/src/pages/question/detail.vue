@@ -750,7 +750,7 @@ const showPayReplyAccessModal = () => {
           const orderRes: any = await createOrderAPI({ userStore })
 
           if (orderRes.code === 200) {
-            const orderNumber = orderRes.data.orderNumber
+            const orderNumber = orderRes.data.number
 
             // 发起支付
             const payRes: any = await reqReplyPayAPI({ orderNumber: orderNumber, userStore })

@@ -1,4 +1,4 @@
-package com.truthgame.config;
+package com.truthgame.config.nacos;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.context.environment.EnvironmentChangeEvent;

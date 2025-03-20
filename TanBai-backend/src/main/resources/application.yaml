@@ -44,10 +44,6 @@ knife4j:
     swagger-model-name: 实体类列表
 
 wx:
-  miniapp:
-    app-id: ${tan.wechat.appid}
-    app-secret: ${tan.wechat.secret}
-    env-version: ${tan.wechat.env-version}
-  mp:
-    app-id: ${tan.wechat.appid}  # 优先使用环境变量
-    app-secret: ${tan.wechat.secret}  # 优先使用环境变量
+  app-id: ${tan.wechat.appid}  # 优先使用环境变量
+  app-secret: ${tan.wechat.secret}  # 优先使用环境变量
+  env-version: ${tan.wechat.env-version}

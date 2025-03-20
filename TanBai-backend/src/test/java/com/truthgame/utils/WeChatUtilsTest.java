@@ -1,6 +1,6 @@
 package com.truthgame.utils;
 
-import com.truthgame.config.WxConfig;
+import com.truthgame.config.WxMpConfiguration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -12,20 +12,20 @@ import org.springframework.test.util.ReflectionTestUtils;
 class WeChatUtilsTest {
 
     private WeChatUtils weChatUtils;
-    private WxConfig wxConfig;
+    private WxMpConfiguration wxMpConfiguration;
 
     @BeforeEach
     void setUp() {
         // 手动创建对象
         weChatUtils = new WeChatUtils();
-        wxConfig = new WxConfig();
+        wxMpConfiguration = new WxMpConfiguration();
         
         // 设置 AppID 和 AppSecret（请替换为你的测试值）
-        wxConfig.setAppId("xxxx");
-        wxConfig.setAppSecret("xxxx");
+        wxMpConfiguration.setAppId("xxxx");
+        wxMpConfiguration.setAppSecret("xxxx");
         
         // 手动注入依赖
-        ReflectionTestUtils.setField(weChatUtils, "wxConfig", wxConfig);
+        ReflectionTestUtils.setField(weChatUtils, "wxMpConfiguration", wxMpConfiguration);
     }
 
     @Test

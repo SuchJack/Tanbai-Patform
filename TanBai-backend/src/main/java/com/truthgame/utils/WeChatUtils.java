@@ -4,7 +4,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.truthgame.config.WxConfig;
+import com.truthgame.config.WxMpConfiguration;
 import com.truthgame.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class WeChatUtils {
 
     @Resource
-    private WxConfig wxConfig;
+    private WxMpConfiguration wxMpConfiguration;
 
     /**
      * 内容安全检查
@@ -60,7 +60,7 @@ public class WeChatUtils {
      */
     public String getAccessToken() {
         String url = String.format("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s",
-                wxConfig.getAppId(), wxConfig.getAppSecret());
+                wxMpConfiguration.getAppId(), wxMpConfiguration.getAppSecret());
 
         // 使用Hutool的HttpUtil发送GET请求
         String result = HttpUtil.get(url);
@@ -93,7 +93,7 @@ public class WeChatUtils {
         params.put("scene", sceneId);                // 场景值，用于传递参数
         params.put("page", page);                    // 必须是已经发布的小程序存在的页面
         params.put("check_path", false);             // 不检查 page 是否存在
-        params.put("env_version", wxConfig.getEnvVersion());        // 要打开的小程序版本。正式版："release"体验版："trial"开发版："develop"
+        params.put("env_version", wxMpConfiguration.getEnvVersion());        // 要打开的小程序版本。正式版："release"体验版："trial"开发版："develop"
         params.put("width", width);                  // 二维码宽度
         params.put("auto_color", true);              // 自动配置线条颜色
         params.put("is_hyaline", false);             // 是否需要透明底色

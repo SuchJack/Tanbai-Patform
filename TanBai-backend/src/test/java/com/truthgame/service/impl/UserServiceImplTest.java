@@ -3,7 +3,6 @@ package com.truthgame.service.impl;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.truthgame.config.WxConfig;
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
@@ -16,9 +15,6 @@ public class UserServiceImplTest {
 
     @Resource
     private UserServiceImpl userService;
-
-    @Resource
-    private WxConfig wxConfig;
 
     @Test
     public void testRegister() {

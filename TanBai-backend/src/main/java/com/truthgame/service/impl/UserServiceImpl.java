@@ -6,7 +6,7 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.truthgame.config.WxConfig;
+import com.truthgame.config.WxMpConfiguration;
 import com.truthgame.exception.BusinessException;
 import com.truthgame.mapper.UserMapper;
 import com.truthgame.model.dto.UserUpdateDTO;
@@ -37,9 +37,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Resource
     private UserMapper userMapper;
-
     @Resource
-    private WxConfig wxConfig;
+    private WxMpConfiguration wxMpConfiguration;
 
 
     @Override
@@ -112,8 +111,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private Map<String, String> getWxInfo(String code) {
         //调用微信接口服务，获得当前微信用户的openid
         Map<String, Object> map = new HashMap<>();
-        map.put("appid", wxConfig.getAppId());
-        map.put("secret", wxConfig.getAppSecret());
+        map.put("appid", wxMpConfiguration.getAppId());
+        map.put("secret", wxMpConfiguration.getAppSecret());
         map.put("js_code", code);
         map.put("grant_type", "authorization_code");
 
@@ -169,7 +168,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String decryptedData = WxDataDecryptUtil.decrypt(sessionKey, encryptedData, iv);
 
         // 3. 校验水印
-        if (!WxDataDecryptUtil.checkWatermark(decryptedData, wxConfig.getAppId())) {
+        if (!WxDataDecryptUtil.checkWatermark(decryptedData, wxMpConfiguration.getAppId())) {
             throw new BusinessException("数据水印校验失败");
         }
 

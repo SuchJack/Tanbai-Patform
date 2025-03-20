@@ -10,7 +10,6 @@ import com.truthgame.manager.CosManager;
 import com.truthgame.model.dto.UploadFileRequest;
 import com.truthgame.model.enums.FileUploadBizEnum;
 import com.truthgame.service.ImageSecCheckService;
-import com.truthgame.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.web.bind.annotation.*;

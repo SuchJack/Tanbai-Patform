@@ -1,7 +1,5 @@
 package com.truthgame.service.impl;
 
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.truthgame.exception.BusinessException;
@@ -19,14 +17,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static com.truthgame.constant.CommentAndReplyConstant.DEFAULT_REPLY;

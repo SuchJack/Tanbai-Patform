@@ -2,7 +2,6 @@ package com.truthgame.controller;
 
 import com.truthgame.common.Result;
 import com.truthgame.exception.BusinessException;
-import com.truthgame.manager.CosManager;
 import com.truthgame.model.dto.PosterDTO;
 import com.truthgame.model.entity.Question;
 import com.truthgame.model.entity.User;
@@ -18,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.util.Base64;
 
 import static com.truthgame.constant.PosterConstant.*;

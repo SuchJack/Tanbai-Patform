@@ -17,7 +17,6 @@ import com.truthgame.service.UserService;
 import com.truthgame.utils.SqlUtils;
 import com.truthgame.utils.WxDataDecryptUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -45,7 +44,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public User wxLogin(WxLoginDTO loginDTO) {
-        String openId = getOpenid(loginDTO.getCode());
+        Map<String, String> wxInfo = getWxInfo(loginDTO.getCode());
+        String openId = wxInfo.get("openid");
+        String sessionKey = wxInfo.get("sessionKey");
+        String unionId = wxInfo.get("unionid");
 
         //判断openid是否为空，如果为空表示登录失败，抛出业务异常
         if (openId == null) {
@@ -56,52 +58,38 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         User user = userMapper.getByOpenid(openId);
 
         //如果是新用户，自动完成注册
-        if(user == null){
+        if (user == null) {
             user = User.builder()
                     .openId(openId)
+                    .unionId(unionId)
+                    .sessionKey(sessionKey)
                     .createTime(LocalDateTime.now())
                     .avatarUrl(DEFAULT_AVATAR)
                     .nickName(DEFAULT_NICKNAME)
                     .build();
-            userMapper.insert(user);//后绪步骤实现
+            userMapper.insert(user);
+        } else {
+            // 更新已有用户的sessionKey和unionId(如果存在)
+            boolean needUpdate = false;
+
+            if (sessionKey != null && !sessionKey.equals(user.getSessionKey())) {
+                user.setSessionKey(sessionKey);
+                needUpdate = true;
+            }
+
+            if (unionId != null && !unionId.equals(user.getUnionId())) {
+                user.setUnionId(unionId);
+                needUpdate = true;
+            }
+
+            if (needUpdate) {
+                user.setUpdateTime(LocalDateTime.now());
+                updateById(user);
+            }
         }
 
         //返回这个用户对象
         return user;
-
-//        // 调用微信接口获取openId和sessionKey
-//        String url = String.format("https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
-//                wxConfig.getAppId(), wxConfig.getAppSecret(), loginDTO.getCode());
-//        String result = HttpUtil.get(url);
-//        JSONObject json = JSONUtil.parseObj(result);
-//
-//        if (json.containsKey("errcode") && json.getInt("errcode") != 0) {
-//            throw new BusinessException("微信登录失败：" + json.getStr("errmsg"));
-//        }
-//
-//        String openId = json.getStr("openid");
-//        String unionId = json.getStr("unionid");
-//        String sessionKey = json.getStr("session_key");
-//
-//        // 查找或创建用户
-//        User user = getUserByOpenId(openId);
-//        boolean isNewUser = false;
-//
-//        if (user == null) {
-//            user = createUser(openId, unionId, sessionKey);
-//            isNewUser = true;
-//        }
-//
-//        // 生成token
-//        String token = JwtUtil.generateToken(user.getId());
-//
-//        // 构建响应
-//        LoginResponseDTO response = new LoginResponseDTO();
-//        response.setUserId(user.getId());
-//        response.setToken(token);
-//        response.setIsNewUser(isNewUser);
-//
-//        return response;
     }
 
     @Override
@@ -121,7 +109,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return user;
     }
 
-    private String getOpenid(String code) {
+    private Map<String, String> getWxInfo(String code) {
         //调用微信接口服务，获得当前微信用户的openid
         Map<String, Object> map = new HashMap<>();
         map.put("appid", wxConfig.getAppId());
@@ -146,6 +134,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             String openid = jsonObject.getStr("openid");
             String sessionKey = jsonObject.getStr("session_key");
             String unionid = jsonObject.getStr("unionid");
+
             log.info("openid = {}", openid);
             log.info("sessionKey = {}", sessionKey);
             log.info("unionid = {}", unionid);
@@ -155,7 +144,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 throw new BusinessException("获取用户信息失败");
             }
 
-            return openid;
+            Map<String, String> result = new HashMap<>();
+            result.put("openid", openid);
+            result.put("sessionKey", sessionKey);
+            result.put("unionid", unionid);
+
+            return result;
         } catch (Exception e) {
             log.error("调用微信接口异常", e);
             throw new BusinessException("微信服务暂时不可用，请稍后再试");
@@ -170,37 +164,37 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (!WxDataDecryptUtil.checkSignature(sessionKey, rawData, signature)) {
             throw new BusinessException("签名校验失败");
         }
-        
+
         // 2. 解密数据
         String decryptedData = WxDataDecryptUtil.decrypt(sessionKey, encryptedData, iv);
-        
+
         // 3. 校验水印
         if (!WxDataDecryptUtil.checkWatermark(decryptedData, wxConfig.getAppId())) {
             throw new BusinessException("数据水印校验失败");
         }
-        
+
         // 4. 解析数据（使用Jackson或其他JSON工具）
         JSONObject jsonObject = JSONUtil.parseObj(decryptedData);
         String openId = jsonObject.getStr("openId");
         String unionId = jsonObject.getStr("unionId");
         String nickName = jsonObject.getStr("nickName");
         String avatarUrl = jsonObject.getStr("avatarUrl");
-        
+
         // 5. 更新或创建用户
         User user = getUserByOpenId(openId);
         if (user == null) {
             user = new User();
             user.setOpenId(openId);
         }
-        
+
         user.setUnionId(unionId);
         user.setNickName(nickName);
         user.setAvatarUrl(avatarUrl);
         user.setSessionKey(sessionKey);
-        
+
         // 保存用户信息
         saveOrUpdate(user);
-        
+
         return user;
     }
 
@@ -220,20 +214,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (user == null) {
             throw new BusinessException("用户不存在");
         }
-        
+
         // 2. 更新用户信息
         boolean needUpdate = false;
-        
+
         if (StringUtils.hasText(updateDTO.getNickName())) {
             user.setNickName(updateDTO.getNickName());
             needUpdate = true;
         }
-        
+
         if (StringUtils.hasText(updateDTO.getAvatarUrl())) {
             user.setAvatarUrl(updateDTO.getAvatarUrl());
             needUpdate = true;
         }
-        
+
         // 3. 如果有更新，保存到数据库
         if (needUpdate) {
             user.setUpdateTime(LocalDateTime.now());
@@ -249,7 +243,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         loginUserVO.setNickName(user.getNickName());
         loginUserVO.setAvatarUrl(user.getAvatarUrl());
         loginUserVO.setTokenValue(tokenValue);
-        
+
         return loginUserVO;
     }
 
@@ -257,13 +251,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public LoginUserVO getLoginUserVO() {
         // 获取当前登录用户ID
         Long userId = StpUtil.getLoginIdAsLong();
-        
+
         // 从数据库获取用户信息
         User user = this.getById(userId);
         if (user == null) {
             throw new BusinessException("用户不存在");
         }
-        
+
         // 获取当前token
         String tokenValue = StpUtil.getTokenValue();
 

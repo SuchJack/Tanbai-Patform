@@ -7,7 +7,7 @@ import com.truthgame.constant.RedisConstants;
 import com.truthgame.mapper.UserMapper;
 import com.truthgame.model.entity.User;
 import com.truthgame.model.vo.LoginUserVO;
-import com.truthgame.utils.NetUtils;
+import com.truthgame.utils.IpUtil;
 import com.truthgame.utils.RedisUtil;
 import com.truthgame.utils.UserAgentUtil;
 import lombok.RequiredArgsConstructor;
@@ -39,14 +39,13 @@ public class MySaTokenListener implements SaTokenListener {
     @Override
     public void doLogin(String loginType, Object loginId, String tokenValue, SaLoginModel loginModel) {
 
-        String ip = NetUtils.getIpAddress(request);
+        String ip = IpUtil.getIp();
         User user = userMapper.selectById((Long) loginId);
         // 更新登录信息
         String userAgent = request.getHeader("User-Agent");
         user.setLastLoginTime(LocalDateTime.now());
         user.setIp(ip);
-//        user.setIpLocation(IpUtil.getIp2region(ip));
-        user.setIpLocation("未知地区");
+        user.setIpLocation(IpUtil.getIp2region(ip));
         user.setOs(UserAgentUtil.getOs(userAgent));
         user.setBrowser(UserAgentUtil.getBrowser(userAgent));
         userMapper.updateById(user);

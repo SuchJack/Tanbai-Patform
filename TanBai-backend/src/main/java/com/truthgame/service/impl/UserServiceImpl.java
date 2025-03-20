@@ -145,8 +145,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
             String openid = jsonObject.getStr("openid");
             String sessionKey = jsonObject.getStr("session_key");
+            String unionid = jsonObject.getStr("unionid");
             log.info("openid = {}", openid);
             log.info("sessionKey = {}", sessionKey);
+            log.info("unionid = {}", unionid);
 
             if (openid == null) {
                 log.error("获取openid失败，微信返回: {}", json);

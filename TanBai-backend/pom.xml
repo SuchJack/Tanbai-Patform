@@ -23,6 +23,18 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <!-- UserAgent -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
+        </dependency>
+
         <!-- Sa-Token -->
         <dependency>
             <groupId>cn.dev33</groupId>
@@ -125,13 +137,6 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- JWT -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-        </dependency>
-
         <!-- Hutool工具包 -->
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -175,10 +180,6 @@
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-common</artifactId>
             <version>${weixin-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,4 +1,4 @@
-package com.truthgame.controller;
+package com.truthgame.controller.common;
 
 import cn.hutool.core.io.FileUtil;
 import com.qcloud.cos.model.COSObject;

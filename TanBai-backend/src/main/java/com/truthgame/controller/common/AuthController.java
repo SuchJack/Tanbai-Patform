@@ -1,4 +1,4 @@
-package com.truthgame.controller;
+package com.truthgame.controller.common;
 
 import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.stp.StpUtil;
@@ -7,7 +7,6 @@ import com.truthgame.model.dto.WxLoginDTO;
 import com.truthgame.model.entity.User;
 import com.truthgame.model.vo.LoginUserVO;
 import com.truthgame.service.UserService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * 问题参考管理接口
+ */
 @RestController
 @RequestMapping("/references")
-@Api(tags = "问题参考管理接口")
 public class QuestionReferenceController {
     
     @Resource

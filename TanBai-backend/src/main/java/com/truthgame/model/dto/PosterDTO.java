@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel("海报生成请求")
+@ApiModel(value = "PosterDTO", description = "海报生成请求")
 public class PosterDTO {
 
 //    @ApiModelProperty("主图URL")

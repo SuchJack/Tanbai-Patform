@@ -1,6 +1,7 @@
 package com.truthgame.model.dto;
 
 import lombok.Data;
+import io.swagger.annotations.ApiModel;
 
 import java.io.Serializable;
 
@@ -8,6 +9,7 @@ import java.io.Serializable;
  * 文件上传请求
  */
 @Data
+@ApiModel(value = "UploadFileRequest", description = "文件上传请求")
 public class UploadFileRequest implements Serializable {
 
     /**

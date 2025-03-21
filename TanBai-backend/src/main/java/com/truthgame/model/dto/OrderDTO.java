@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Data
-@ApiModel(description = "订单创建请求")
+@ApiModel(value = "OrderDTO", description = "订单创建请求")
 public class OrderDTO {
     
     @NotNull(message = "用户ID不能为空")

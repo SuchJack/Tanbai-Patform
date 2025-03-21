@@ -7,7 +7,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@ApiModel("回复信息")
+@ApiModel(value = "ReplyVO", description = "回复信息")
 public class ReplyVO {
     
     @ApiModelProperty("回复ID")

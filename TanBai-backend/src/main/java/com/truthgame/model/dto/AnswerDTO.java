@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-@ApiModel("回答创建请求")
+@ApiModel(value = "AnswerDTO", description = "回答创建请求")
 public class AnswerDTO {
     @NotNull(message = "问题ID不能为空")
     @ApiModelProperty("问题ID")

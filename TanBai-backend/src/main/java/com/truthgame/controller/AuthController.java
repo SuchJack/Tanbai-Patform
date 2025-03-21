@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+/**
+ * 认证接口
+ */
 @RestController
 @RequestMapping("/auth")
-@Api(tags = "认证接口")
 @Slf4j
 public class AuthController {
 

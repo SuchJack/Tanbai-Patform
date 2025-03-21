@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import io.swagger.annotations.ApiModel;
 
 import java.io.Serializable;
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(value = "OrderPaymentVO", description = "订单支付信息")
 public class OrderPaymentVO implements Serializable {
 
     private String nonceStr; //随机字符串

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+/**
+ * 客服服务接口
+ */
 @RestController
 @RequestMapping("/customer-service")
 public class CustomerServiceController {

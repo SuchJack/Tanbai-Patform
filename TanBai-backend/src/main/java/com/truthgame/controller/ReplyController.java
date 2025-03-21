@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+/**
+ * 回复管理接口
+ */
 @RestController
 @RequestMapping("/replies")
-@Api(tags = "回复管理接口")
 public class ReplyController {
     
     @Resource

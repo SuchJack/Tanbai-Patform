@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@ApiModel("问题详情")
+@ApiModel(value = "QuestionDetailVO", description = "问题详情")
 public class QuestionDetailVO {
     
     @ApiModelProperty("问题信息")

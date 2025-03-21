@@ -20,9 +20,11 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * 回答相关接口
+ */
 @RestController
 @RequestMapping("/answers")
-@Api(tags = "回答管理接口")
 public class AnswerController {
     
     @Resource

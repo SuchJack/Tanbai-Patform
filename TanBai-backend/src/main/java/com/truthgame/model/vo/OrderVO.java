@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@ApiModel(description = "订单信息")
+@ApiModel(value = "OrderVO", description = "订单信息")
 public class OrderVO {
     
     @ApiModelProperty("订单ID")

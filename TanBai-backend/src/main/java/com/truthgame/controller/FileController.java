@@ -24,9 +24,6 @@ import java.util.Arrays;
 
 /**
  * 文件接口
- *
- * @author SuchJack
-
  */
 @RestController
 @RequestMapping("/file")

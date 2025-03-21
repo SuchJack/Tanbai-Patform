@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel("带回答数量的问题")
+@ApiModel(value = "QuestionWithAnswerCountVO", description = "带回答数量的问题")
 public class QuestionWithAnswerCountVO {
     
     @ApiModelProperty("问题信息")

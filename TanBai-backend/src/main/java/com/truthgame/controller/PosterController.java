@@ -22,10 +22,12 @@ import java.util.Base64;
 
 import static com.truthgame.constant.PosterConstant.*;
 
+/**
+ * 海报生成接口
+ */
 @Slf4j
 @RestController
 @RequestMapping("/posters")
-@Api(tags = "海报生成接口")
 public class PosterController {
 
     @Resource

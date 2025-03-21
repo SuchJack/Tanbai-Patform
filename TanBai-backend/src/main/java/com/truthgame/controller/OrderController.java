@@ -22,10 +22,12 @@ import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * 订单管理接口
+ */
 @Slf4j
 @RestController
 @RequestMapping("/orders")
-@Api(tags = "订单管理接口")
 public class OrderController {
     
     @Resource

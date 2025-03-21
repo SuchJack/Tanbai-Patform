@@ -7,7 +7,7 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 @Data
-@ApiModel(description = "支付创建请求")
+@ApiModel(value = "PayDTO", description = "支付创建请求")
 public class PayDTO {
 
     @NotNull(message = "订单号不能为空")

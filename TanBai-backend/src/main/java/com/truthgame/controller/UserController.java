@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+/**
+ * 用户管理接口
+ */
 @RestController
 @RequestMapping("/users")
-@Api(tags = "用户管理接口")
 @Slf4j
 public class UserController {
     

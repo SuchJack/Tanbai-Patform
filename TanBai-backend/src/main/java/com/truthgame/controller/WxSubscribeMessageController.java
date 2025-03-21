@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+/**
+ * 微信订阅消息发送接口
+ */
 @RestController
 @RequestMapping("/wx/subscribe-message")
 public class WxSubscribeMessageController {

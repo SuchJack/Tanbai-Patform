@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@ApiModel("用户信息")
+@ApiModel(value = "LoginUserVO", description = "用户信息")
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginUserVO {

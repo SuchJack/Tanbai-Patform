@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@ApiModel("带回复的回答")
+@ApiModel(value = "AnswerWithRepliesVO", description = "带回复的回答")
 public class AnswerWithRepliesVO {
     
     @ApiModelProperty("回答信息")

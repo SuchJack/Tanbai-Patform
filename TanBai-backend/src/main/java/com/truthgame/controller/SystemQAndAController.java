@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * 常见问题管理接口
+ */
 @RestController
 @RequestMapping("/qa")
-@Api(tags = "常见问题管理接口")
 public class SystemQAndAController {
     
     @Resource

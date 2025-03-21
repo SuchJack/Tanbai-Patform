@@ -17,9 +17,11 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * 问题管理接口
+ */
 @RestController
 @RequestMapping("/questions")
-@Api(tags = "问题管理接口")
 @Slf4j
 public class QuestionController {
     

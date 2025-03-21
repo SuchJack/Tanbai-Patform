@@ -1,12 +1,12 @@
 {
-  "name": "uni-app-xiaotuxian",
-  "version": "0.0.0",
+  "name": "uni-app-tanbai",
+  "version": "1.0.0",
   "author": {
     "name": "SuchJack",
     "url": "https://such-jack.top/"
   },
   "scripts": {
-    "openapi": "node openapi.config.ts",
+    "openapi": "openapi-ts",
     "dev:app": "uni -p app",
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
@@ -65,7 +65,6 @@
     "@dcloudio/uni-mp-xhs": "3.0.0-alpha-3081220230802001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3081220230802001",
     "@dcloudio/uni-ui": "^1.5.7",
-    "@umijs/openapi": "^1.13.0",
     "pinia": "2.0.27",
     "pinia-plugin-persistedstate": "^3.2.0",
     "vue": "^3.2.47",
@@ -91,6 +90,7 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "miniprogram-api-typings": "^3.12.3",
+    "openapi-ts-request": "^1.2.0",
     "prettier": "^2.8.0",
     "sass": "^1.56.1",
     "typescript": "^5.1.6",

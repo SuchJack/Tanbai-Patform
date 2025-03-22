@@ -43,7 +43,6 @@ const httpInterceptor = {
     const cookie = uni.getStorageSync(COOKIE_KEY)
     if (cookie) {
       options.header.cookie = cookie
-
     }
   },
 }

@@ -1,6 +1,6 @@
 /* eslint-disable */
 // @ts-ignore
-import { request } from 'axios';
+import request from '@/utils/request.ts';
 
 import * as API from './types';
 
@@ -12,7 +12,7 @@ export async function createAnswerUsingPost({
   body: API.AnswerDTO;
   options?: { [key: string]: unknown };
 }) {
-  return request<API.ResultAnswer_>('/answers', {
+  return request('/answers', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

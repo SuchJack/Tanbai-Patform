@@ -1,6 +1,6 @@
 /* eslint-disable */
 // @ts-ignore
-import { request } from 'axios';
+import request from '@/utils/request.ts';
 
 import * as API from './types';
 

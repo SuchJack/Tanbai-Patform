@@ -70,9 +70,10 @@ import { onMounted, ref } from 'vue'
 import { useUserStore } from '@/stores'
 import { DEFAULT_AVATAR } from '@/constant'
 import { handleCodeAndLogin } from '@/composables'
-import { getLoginUserVOAPI, updateUserProfileAPI } from '@/services/user'
+import { updateUserProfileAPI } from '@/services/user'
 import UserInfoPopup from '@/components/UserInfoPopup.vue'
 import { onShow } from '@dcloudio/uni-app'
+import { getLoginUserVoUsingGet } from '@/apis'
 
 const userStore = useUserStore()
 const showPopup = ref(false)
@@ -139,7 +140,7 @@ const handleUserInfoUpdate = async (info: { avatarUrl: string; nickName: string 
 
     // 重新获取用户信息并更新到store中
     try {
-      const userInfoRes: any = await getLoginUserVOAPI()
+      const userInfoRes: any = await getLoginUserVoUsingGet({ options: {} })
       if (userInfoRes.code === 200 && userInfoRes.data) {
         // 更新 store 中的用户信息
         userStore.setProfile(userInfoRes.data)

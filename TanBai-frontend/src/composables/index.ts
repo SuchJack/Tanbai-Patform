@@ -1,5 +1,5 @@
-import { getUserLoginAPI, getLoginUserVOAPI } from '@/services/user'
 import { useUserStore } from '@/stores'
+import { getLoginUserVoUsingGet, wxLoginUsingPost } from '@/apis'
 
 const userStore = useUserStore()
 
@@ -20,7 +20,7 @@ export const handleCodeAndLogin = async (userLoginCache: any) => {
     // 如果有 tokenValue，先尝试使用 getLoginUserVO 接口获取用户信息
     if (userLoginCache && userStore.profile?.tokenValue) {
       console.log('尝试使用现有 token 获取用户信息')
-      const res: any = await getLoginUserVOAPI()
+      const res: any = await getLoginUserVoUsingGet({ options: {} })
 
       if (res.code === 200 && res.data) {
         // 保存用户信息到 store
@@ -66,9 +66,12 @@ export const handleCodeAndLogin = async (userLoginCache: any) => {
  */
 export const handleLogin = async (code: string) => {
   try {
-    const res: any = await getUserLoginAPI({ code })
+    const res: any = await wxLoginUsingPost({
+      body: { code: code },
+      options: {},
+    })
     console.log('登录结果:', res)
-    if ((res.code as any) === 200) {
+    if (res.code === 200) {
       // 保存用户信息到 store
       userStore.setProfile(res.data)
       return true

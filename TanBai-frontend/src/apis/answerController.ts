@@ -12,7 +12,7 @@ export async function createAnswerUsingPost({
   body: API.AnswerDTO;
   options?: { [key: string]: unknown };
 }) {
-  return request('/answers', {
+  return request<API.ResultAnswer_>('/answers', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

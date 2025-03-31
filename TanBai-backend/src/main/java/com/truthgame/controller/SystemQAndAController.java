@@ -3,7 +3,6 @@ package com.truthgame.controller;
 import com.truthgame.common.Result;
 import com.truthgame.model.entity.SystemQAndA;
 import com.truthgame.service.SystemQAndAService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.GetMapping;

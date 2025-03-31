@@ -8,7 +8,6 @@ import com.truthgame.model.entity.User;
 import com.truthgame.service.QuestionService;
 import com.truthgame.service.UserService;
 import com.truthgame.utils.PosterUtil;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

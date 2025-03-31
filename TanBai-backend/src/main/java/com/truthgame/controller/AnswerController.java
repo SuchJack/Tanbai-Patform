@@ -11,7 +11,6 @@ import com.truthgame.service.AnswerService;
 import com.truthgame.service.QuestionService;
 import com.truthgame.service.UserService;
 import com.truthgame.service.WxSubscribeMessageService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;

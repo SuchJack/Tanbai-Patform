@@ -4,7 +4,6 @@ import com.truthgame.common.Result;
 import com.truthgame.model.dto.UserUpdateDTO;
 import com.truthgame.model.vo.LoginUserVO;
 import com.truthgame.service.UserService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PutMapping;

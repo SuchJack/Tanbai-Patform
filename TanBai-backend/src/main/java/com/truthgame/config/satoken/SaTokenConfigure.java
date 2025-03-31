@@ -22,6 +22,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
                         "/swagger-resources/**", // knife4j接口文档
                         "/qa",
                         "/customer-service",
+                        "/**",
                         "/posters/**"  //TODO 需要拦截
                 );
     }

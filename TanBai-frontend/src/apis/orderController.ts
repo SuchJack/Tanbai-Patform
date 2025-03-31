@@ -121,15 +121,15 @@ export async function getReplyOrderPayStatusUsingGet({
   );
 }
 
-/** 支付订单 POST /orders/pay */
-export async function payOrderUsingPost({
+/** 支付Reply订单 POST /orders/pay/reply/v3 */
+export async function payReplyOrderUsingPost({
   body,
   options,
 }: {
   body: API.PayDTO;
   options?: { [key: string]: unknown };
 }) {
-  return request<API.ResultOrderPaymentVO_>('/orders/pay', {
+  return request<API.ResultOrderPaymentVO_>('/orders/pay/reply/v3', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -139,15 +139,15 @@ export async function payOrderUsingPost({
   });
 }
 
-/** 支付Reply订单 POST /orders/pay/reply */
-export async function payReplyOrderUsingPost({
+/** 支付订单 POST /orders/pay/v3 */
+export async function payOrderV3UsingPost({
   body,
   options,
 }: {
   body: API.PayDTO;
   options?: { [key: string]: unknown };
 }) {
-  return request<API.ResultOrderPaymentVO_>('/orders/pay/reply', {
+  return request<API.ResultOrderPaymentVO_>('/orders/pay/v3', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

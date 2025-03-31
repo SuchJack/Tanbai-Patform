@@ -15,10 +15,7 @@ public interface UserService extends IService<User> {
     
     // 创建用户
     User createUser(String openId, String unionId, String sessionKey);
-    
-    // 处理微信用户信息
-    User processUserInfo(String sessionKey, String encryptedData, String iv, String signature, String rawData);
-    
+
     // 更新用户信息
     LoginUserVO updateUserInfo(UserUpdateDTO updateDTO);
     

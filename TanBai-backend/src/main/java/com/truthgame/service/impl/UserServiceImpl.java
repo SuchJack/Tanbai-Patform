@@ -15,7 +15,6 @@ import com.truthgame.model.entity.User;
 import com.truthgame.model.vo.LoginUserVO;
 import com.truthgame.service.UserService;
 import com.truthgame.utils.SqlUtils;
-import com.truthgame.utils.WxDataDecryptUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -153,48 +152,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             log.error("调用微信接口异常", e);
             throw new BusinessException("微信服务暂时不可用，请稍后再试");
         }
-    }
-
-    /**
-     * 处理微信用户信息
-     */
-    public User processUserInfo(String sessionKey, String encryptedData, String iv, String signature, String rawData) {
-        // 1. 校验签名
-        if (!WxDataDecryptUtil.checkSignature(sessionKey, rawData, signature)) {
-            throw new BusinessException("签名校验失败");
-        }
-
-        // 2. 解密数据
-        String decryptedData = WxDataDecryptUtil.decrypt(sessionKey, encryptedData, iv);
-
-        // 3. 校验水印
-        if (!WxDataDecryptUtil.checkWatermark(decryptedData, wxMpConfiguration.getAppId())) {
-            throw new BusinessException("数据水印校验失败");
-        }
-
-        // 4. 解析数据（使用Jackson或其他JSON工具）
-        JSONObject jsonObject = JSONUtil.parseObj(decryptedData);
-        String openId = jsonObject.getStr("openId");
-        String unionId = jsonObject.getStr("unionId");
-        String nickName = jsonObject.getStr("nickName");
-        String avatarUrl = jsonObject.getStr("avatarUrl");
-
-        // 5. 更新或创建用户
-        User user = getUserByOpenId(openId);
-        if (user == null) {
-            user = new User();
-            user.setOpenId(openId);
-        }
-
-        user.setUnionId(unionId);
-        user.setNickName(nickName);
-        user.setAvatarUrl(avatarUrl);
-        user.setSessionKey(sessionKey);
-
-        // 保存用户信息
-        saveOrUpdate(user);
-
-        return user;
     }
 
     @Override

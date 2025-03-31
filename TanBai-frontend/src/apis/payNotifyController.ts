@@ -4,62 +4,20 @@ import request from '@/utils/request.ts';
 
 import * as API from './types';
 
-/** paySuccessNotify GET /notify/paySuccess */
-export async function paySuccessNotifyUsingGet({
+/** 支付回调通知处理 POST /notify/paySuccess */
+export async function parseOrderNotifyResultUsingPost({
+  body,
   options,
 }: {
+  body: string;
   options?: { [key: string]: unknown };
 }) {
-  return request<unknown>('/notify/paySuccess', {
-    method: 'GET',
-    ...(options || {}),
-  });
-}
-
-/** paySuccessNotify PUT /notify/paySuccess */
-export async function paySuccessNotifyUsingPut({
-  options,
-}: {
-  options?: { [key: string]: unknown };
-}) {
-  return request<unknown>('/notify/paySuccess', {
-    method: 'PUT',
-    ...(options || {}),
-  });
-}
-
-/** paySuccessNotify POST /notify/paySuccess */
-export async function paySuccessNotifyUsingPost({
-  options,
-}: {
-  options?: { [key: string]: unknown };
-}) {
-  return request<unknown>('/notify/paySuccess', {
+  return request<string>('/notify/paySuccess', {
     method: 'POST',
-    ...(options || {}),
-  });
-}
-
-/** paySuccessNotify DELETE /notify/paySuccess */
-export async function paySuccessNotifyUsingDelete({
-  options,
-}: {
-  options?: { [key: string]: unknown };
-}) {
-  return request<unknown>('/notify/paySuccess', {
-    method: 'DELETE',
-    ...(options || {}),
-  });
-}
-
-/** paySuccessNotify PATCH /notify/paySuccess */
-export async function paySuccessNotifyUsingPatch({
-  options,
-}: {
-  options?: { [key: string]: unknown };
-}) {
-  return request<unknown>('/notify/paySuccess', {
-    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
     ...(options || {}),
   });
 }

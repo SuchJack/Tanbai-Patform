@@ -36,7 +36,7 @@ server:
 
 # knife4j配置
 knife4j:
-  enable: true
+#  enable: true
   setting:
     language: zh-CN
     enable-swagger-models: true

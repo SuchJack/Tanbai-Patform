@@ -217,13 +217,14 @@ import {
   getQuestionDetailAPI,
   replyCommentAPI,
 } from '@/services/question'
-import { createOrderAPI, getOrderStatusAPI, getReplyOrderStatusAPI, reqPayAPI, reqReplyPayAPI } from '@/services/orders'
+import { createOrderAPI, getOrderStatusAPI, getReplyOrderStatusAPI } from '@/services/orders'
 import UserInfoPopup from '@/components/UserInfoPopup.vue'
 import ConfirmPopup from '@/components/ConfirmPopup.vue'
 import { updateUserProfileAPI } from '@/services/user'
 import { handleCodeAndLogin, waitForLogin } from '@/composables'
 import { DEFAULT_AVATAR, MESSAGE_TMP_IDS } from '@/constant'
 import { onLoad, onShow } from '@dcloudio/uni-app'
+import { payOrderV3UsingPost, payReplyOrderUsingPost } from '@/apis'
 
 const userStore = useUserStore()
 const loading = ref(true)
@@ -287,9 +288,9 @@ const getQuestionDetail: any = async (questionId: string) => {
           success: () => {
             // 用户点击确定后返回首页
             uni.reLaunch({
-              url: '/pages/index/index'
+              url: '/pages/index/index',
             })
-          }
+          },
         })
         return
       }
@@ -649,7 +650,15 @@ const showPayModal = () => {
             const orderNumber = orderRes.data.number
 
             // 发起支付
-            const payRes: any = await reqPayAPI({ orderNumber: orderNumber, userStore })
+            // const payRes: any = await reqPayAPI({ orderNumber: orderNumber, userStore })
+            const payRes: any = await payOrderV3UsingPost({
+              body: {
+                orderNumber,
+                userId: userStore.profile?.userId,
+                openId: userStore.profile?.openId,
+              },
+              options: {},
+            })
 
             if (payRes.code === 200) {
               // 获取支付参数
@@ -753,7 +762,15 @@ const showPayReplyAccessModal = () => {
             const orderNumber = orderRes.data.number
 
             // 发起支付
-            const payRes: any = await reqReplyPayAPI({ orderNumber: orderNumber, userStore })
+            // const payRes: any = await reqReplyPayAPI({ orderNumber: orderNumber, userStore })
+            const payRes: any = await payReplyOrderUsingPost({
+              body: {
+                orderNumber,
+                userId: userStore.profile?.userId,
+                openId: userStore.profile?.openId,
+              },
+              options: {},
+            })
 
             if (payRes.code === 200) {
               // 获取支付参数

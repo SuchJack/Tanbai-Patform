@@ -7,7 +7,6 @@ import com.truthgame.model.entity.Question;
 import com.truthgame.model.vo.QuestionDetailVO;
 import com.truthgame.model.vo.QuestionWithAnswerCountVO;
 import com.truthgame.service.QuestionService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;

@@ -86,41 +86,6 @@ public class OrderController {
         return Result.success(orderPaymentVO);
     }
 
-//    @PostMapping("/pay")
-//    @ApiOperation("支付订单")
-//    public Result<OrderPaymentVO> payOrder(@Valid @RequestBody PayDTO payDTO) throws Exception {
-//
-//        // 1. 查询订单
-//        Orders order = orderService.getOrderByNumber(payDTO.getOrderNumber());
-//        if (order == null) {
-//            throw new BusinessException("订单不存在");
-//        }
-//
-//        // 2. 验证订单所属人
-//        if (!order.getUserId().toString().equals(payDTO.getUserId())) {
-//            throw new BusinessException("无权操作此订单");
-//        }
-//
-//        // 3. 调用微信支付
-//        //调用微信支付接口，生成预支付交易单
-//        JSONObject jsonObject = weChatPayUtil.pay(
-//                payDTO.getOrderNumber(), //商户订单号
-//                new BigDecimal(5.20), //支付金额，单位 元
-//                "坦白驿站-解锁房间头像昵称", //商品描述
-//                payDTO.getOpenId() //微信用户的openid
-//        );
-//        System.out.println("jsonObject = " + jsonObject);
-//
-//        if (jsonObject.getString("code") != null && jsonObject.getString("code").equals("ORDERPAID")) {
-//            throw new BusinessException("该订单已支付");
-//        }
-//
-//        OrderPaymentVO vo = jsonObject.toJavaObject(OrderPaymentVO.class);
-//        vo.setPackageStr(jsonObject.getString("package"));
-//
-//        return Result.success(vo);
-//    }
-
     @PostMapping("/pay/reply/v3")
     @ApiOperation("支付Reply订单")
     public Result<OrderPaymentVO> payReplyOrder(@Valid @RequestBody PayDTO payDTO) throws Exception {

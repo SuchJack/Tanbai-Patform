@@ -32,7 +32,7 @@ logging:
 
 # 服务器配置
 server:
-  port: 8641
+  port: 8800
 
 # knife4j配置
 knife4j:

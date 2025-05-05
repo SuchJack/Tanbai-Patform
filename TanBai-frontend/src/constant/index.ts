@@ -22,11 +22,6 @@ export const DEFAULT_AVATAR =
   'https://tbpic.moshanghong.site/user_avatar%2Fdefault_avatar%2Fdefault-avatar.webp'
 
 /**
- * 后端请求成功状态码 todo 后续优化后端代码使用
- */
-export const SUCCESS_CODE = 40000
-
-/**
  * Sa-token 登录态cookie key
  */
 export const COOKIE_KEY = 'tanbai'

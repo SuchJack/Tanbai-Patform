@@ -24,16 +24,6 @@ public class WxPayProperties {
   private String mchId;
 
   /**
-   * 微信支付商户密钥
-   */
-  private String mchKey;
-
-  /**
-   * apiclient_cert.p12文件的绝对路径，或者如果放在项目中，请以classpath:开头指定
-   */
-  private String keyPath;
-
-  /**
    * apiV3 秘钥值
    * (V3商户模式需要)
    */
@@ -56,5 +46,20 @@ public class WxPayProperties {
    * (V3商户模式需要，这里用的是文件路径，可以用其它base64编码或字节数组参数替代)
    */
   private String privateKeyPath;
+
+  /**
+   * 公钥ID
+   */
+  private String publicKeyId;
+
+  /**
+   * pub_key.pem证书文件的绝对路径或者以classpath:开头的类路径.
+   */
+  private String publicKeyPath;
+
+  /**
+   * 支付成功回调地址
+   */
+  private String notifyUrl;
 
 }

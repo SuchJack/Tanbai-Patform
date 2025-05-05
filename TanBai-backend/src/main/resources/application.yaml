@@ -6,7 +6,7 @@ spring:
     password: ${tan.datasource.password}
     driver-class-name: ${tan.datasource.driver-class-name}
   profiles:
-    active: local
+    active: dev
   servlet:
     multipart:
       max-file-size: 10MB
@@ -27,6 +27,9 @@ mybatis-plus:
 logging:
   level:
     com.truthgame: debug
+    org.springframework.web: info
+    com.github.binarywang.demo.wx.pay: debug
+    com.github.binarywang.wxpay: debug
   file:
     name: logs/truth-game.log
 

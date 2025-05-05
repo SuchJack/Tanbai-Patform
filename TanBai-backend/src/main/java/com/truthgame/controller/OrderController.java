@@ -38,7 +38,6 @@ public class OrderController {
     @Resource
     private WxPayService wxService;
 
-
     @PostMapping
     @ApiOperation("创建订单")
     public Result<OrderVO> createOrder(@Valid @RequestBody OrderDTO orderDTO) {
@@ -76,7 +75,6 @@ public class OrderController {
         request.setDescription("坦白驿站-解锁房间头像昵称");
         request.setAmount(amount);
         request.setPayer(payer);
-        request.setNotifyUrl("https://1jyia03853275.vicp.fun/notify/paySuccess");
         WxPayUnifiedOrderV3Result.JsapiResult result = wxService.createOrderV3(TradeTypeEnum.JSAPI, request);
         System.out.println("【调用支付结果】result = " + result);
 

@@ -25,18 +25,15 @@ public class WxPayConfiguration {
   @ConditionalOnMissingBean
   public WxPayService wxService() {
     WxPayConfig payConfig = new WxPayConfig();
-    payConfig.setAppId(StringUtils.trimToNull(this.properties.getAppId()));//V3商户模式需要
-    payConfig.setMchId(StringUtils.trimToNull(this.properties.getMchId()));//V3商户模式需要
-    payConfig.setMchKey(StringUtils.trimToNull(this.properties.getMchKey()));
-//    payConfig.setSubAppId(StringUtils.trimToNull(this.properties.getSubAppId()));
-//    payConfig.setSubMchId(StringUtils.trimToNull(this.properties.getSubMchId()));
-    payConfig.setKeyPath(StringUtils.trimToNull(this.properties.getKeyPath()));
-    payConfig.setApiV3Key(StringUtils.trimToNull(this.properties.getApiV3Key()));//V3商户模式需要
-    payConfig.setCertSerialNo(StringUtils.trimToNull(this.properties.getCertSerialNo()));//V3商户模式需要
-    payConfig.setPrivateCertPath(StringUtils.trimToNull(this.properties.getPrivateCertPath()));//V3商户模式需要
-    payConfig.setPrivateKeyPath(StringUtils.trimToNull(this.properties.getPrivateKeyPath()));//V3商户模式需要
-//    payConfig.setPublicKeyPath(StringUtils.trimToNull(this.properties.getPublicKeyPath()));//V3商户模式需要
-//    payConfig.setPublicKeyId(StringUtils.trimToNull(this.properties.getPublicKeyId()));//V3商户模式需要
+    payConfig.setAppId(StringUtils.trimToNull(this.properties.getAppId()));//【V3商户模式需要】
+    payConfig.setMchId(StringUtils.trimToNull(this.properties.getMchId()));//【V3商户模式需要】
+    payConfig.setApiV3Key(StringUtils.trimToNull(this.properties.getApiV3Key()));//【V3商户模式需要】
+    payConfig.setCertSerialNo(StringUtils.trimToNull(this.properties.getCertSerialNo()));//【V3商户模式需要】
+//    payConfig.setPrivateCertPath(StringUtils.trimToNull(this.properties.getPrivateCertPath()));//【V3商户模式需要】 - 商户API证书（公钥验签不能配置！4.7.4.b版本SDK会触发autoUpdateCert()导致报错！）
+    payConfig.setPrivateKeyPath(StringUtils.trimToNull(this.properties.getPrivateKeyPath()));//【V3商户模式需要】
+    payConfig.setPublicKeyPath(StringUtils.trimToNull(this.properties.getPublicKeyPath()));//【V3商户模式需要】
+    payConfig.setPublicKeyId(StringUtils.trimToNull(this.properties.getPublicKeyId()));//【V3商户模式需要】
+    payConfig.setNotifyUrl(StringUtils.trimToNull(this.properties.getNotifyUrl()));//支付成功回调地址
 
     // 可以指定是否使用沙箱环境
     payConfig.setUseSandboxEnv(false);

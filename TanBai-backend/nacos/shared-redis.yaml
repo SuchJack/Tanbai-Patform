@@ -1,0 +1,7 @@
+# ==================== Redis 配置 ====================
+spring:
+  redis:
+    host: xxx.xxx.xxx.xxx
+    port: 6379
+    password: xxxxxx
+    database: 4

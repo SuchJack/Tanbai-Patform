@@ -1,18 +1,4 @@
-/*
- Navicat Premium Dump SQL
 
- Source Server         : 110.40.64.81 - docker - mysql8.0
- Source Server Type    : MySQL
- Source Server Version : 80035 (8.0.35)
- Source Host           : 110.40.64.81:15621
- Source Schema         : tanbai
-
- Target Server Type    : MySQL
- Target Server Version : 80035 (8.0.35)
- File Encoding         : 65001
-
- Date: 08/04/2025 20:52:54
-*/
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;

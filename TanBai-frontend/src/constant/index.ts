@@ -2,7 +2,7 @@
  * 后端地址
  */
 // export const BACKEND_HOST_PROD = 'https://api.moshanghong.site' // 线上地址
-export const BACKEND_HOST_PROD = 'http://localhost:8641' // 本地地址
+export const BACKEND_HOST_PROD = 'http://localhost:8800' // 本地地址
 
 /**
  * COS 存储桶地址

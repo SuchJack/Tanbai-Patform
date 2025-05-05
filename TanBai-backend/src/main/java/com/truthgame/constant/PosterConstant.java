@@ -10,7 +10,6 @@ public class PosterConstant {
 
     public static final String DEFAULT_POSTER_CONTENT = "长按识别二维码";
 
-//    public static final String BASE_URL = "https://tanbai-1256961743.cos.ap-chengdu.myqcloud.com";
     public static final String BASE_URL = "https://tbpic.moshanghong.site";
 
 }

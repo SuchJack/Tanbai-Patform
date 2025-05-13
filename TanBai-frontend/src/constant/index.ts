@@ -1,13 +1,13 @@
 /**
  * 后端地址
  */
-export const BACKEND_HOST_PROD = 'https://api.moshanghong.site' // 线上地址
+export const BACKEND_HOST_PROD = 'https://api-tanbai.moshanghongwangluo.com' // 线上地址
 // export const BACKEND_HOST_PROD = 'http://localhost:8800' // 本地地址
 
 /**
  * COS 存储桶地址
  */
-export const COS_HOST = 'https://tbpic.moshanghong.site'
+export const COS_HOST = 'https://pic-tanbai.moshanghongwangluo.com'
 
 /**
  * 匿名头像
@@ -19,7 +19,7 @@ export const DEFAULT_NICK_AVATAR =
  * 默认头像
  */
 export const DEFAULT_AVATAR =
-  'https://tbpic.moshanghong.site/user_avatar%2Fdefault_avatar%2Fdefault-avatar.webp'
+  'https://pic-tanbai.moshanghongwangluo.com/user_avatar%2Fdefault_avatar%2Fdefault-avatar.webp'
 
 /**
  * Sa-token 登录态cookie key

@@ -12,6 +12,6 @@
 4. 启动项目
 
 > Tips：
-> `PosterConstant`常量`public static final String DEFAULT_POSTER_BACKGROUND = "https://tbpic.moshanghong.site/user_avatar/default_poster/bg2.jpg";` 为海报背景图URL。
+> `PosterConstant`常量`public static final String DEFAULT_POSTER_BACKGROUND = "https://pic-tanbai.moshanghongwangluo.com/user_avatar/default_poster/bg2.jpg";` 为海报背景图URL。
 >
 > 默认海报背景图URL需替换为自己的图片URL（海报本地文件在`resources/poster`目录下），同时需要在微信小程序后台配置域名白名单）

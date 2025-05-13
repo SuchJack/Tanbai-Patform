@@ -66,11 +66,17 @@
 
 
 
+Tips：如海报字体异常，请下载字体同时切换成Java17运行
 
+```bash
+# CentOS/RHEL
+sudo yum install -y fontconfig
+sudo yum install -y google-noto-cjk-fonts
 
-
-
-
+# Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install -y fonts-noto-cjk
+```
 
 
 

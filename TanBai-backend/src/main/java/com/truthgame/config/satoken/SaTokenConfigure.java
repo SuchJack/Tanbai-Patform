@@ -15,7 +15,6 @@ public class SaTokenConfigure implements WebMvcConfigurer {
         registry.addInterceptor(new SaInterceptor(handle -> StpUtil.checkLogin()))
                 .addPathPatterns("/**")
                 .excludePathPatterns(
-                        "/api/auth/wx/login",  // 登录接口不需要验证
                         "/doc.html",           // knife4j接口文档
                         "/webjars/**",         // knife4j接口文档
                         "/v2/api-docs",        // knife4j接口文档

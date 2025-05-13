@@ -51,6 +51,7 @@ public class AuthController {
      * 获取当前登录用户
      * @return LoginUserVO
      */
+    @SaIgnore
     @GetMapping("/get/login")
     @ApiOperation("获取当前登录用户")
     public Result<LoginUserVO> getLoginUserVO() {

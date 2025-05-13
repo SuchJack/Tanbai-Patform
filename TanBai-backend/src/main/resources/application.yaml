@@ -8,7 +8,7 @@ spring:
     password: ${tan.datasource.password}
     driver-class-name: ${tan.datasource.driver-class-name}
   profiles:
-    active: dev # 配置环境
+    active: prod # 配置环境
   servlet:
     multipart:
       max-file-size: 10MB
